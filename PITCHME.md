@@ -1,6 +1,6 @@
 # Typing and existing React and Redux application
 
-
+---
 ## Why do I need to type my code?
 
 Don't force poor code to deal with input it is not prepared for :(
