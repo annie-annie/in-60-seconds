@@ -2,7 +2,7 @@
 
 ---
 
-## Example primitive type + input:
+#### Example primitive type + input:
 
 ```javascript
 const createOption = (cat: string) => (
