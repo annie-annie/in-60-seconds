@@ -4,7 +4,7 @@
 
 ## Example primitive type + input:
 
-```dusk
+```javascript
 const createOption = (cat: string) => (
   <option key={cat} value={cat}>
     {cat}
