@@ -1,14 +1,14 @@
-# Typing and existing React and Redux application
+## Typing and existing React and Redux application
 
 ---
-## Why do I need to type my code?
+#### Why do I need to type my code?
 
 Don't force poor code to deal with input it is not prepared for :(
 
 >Catching these kinds of errors in compile time can greatly benefit your overall productivity and sanity.
 
-
-##  What options do I have for typing my javascript
+---
+####  What options do I have for typing my javascript
 
 |                                    | Flow                                               | Typescript                                                                                                                 |
 | ---------------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -20,22 +20,22 @@ Don't force poor code to deal with input it is not prepared for :(
 
 ! Note all ⭐ Are based on my opinion there is no official chart and this is a gross oversimplification
 
-
-## Which should I use in my existing project?
+---
+#### Which should I use in my existing project?
 
 Considerations:
 - Cost to convert existing code base and company buy-in
 - Tools and setup that you already have compared with typescript setup
 - Developer preference and buy-in
 
-
-## For the purposes of this talk let us assume:
+---
+#### For the purposes of this talk let us assume:
 We have a fairly large code base already. We have all the tools in place and we are happy with the JS features that we have and we can add to them with Babel.
 
 ...so we decide to use Flow
 
-
-## What it looks like:
+---
+#### What it looks like:
 
 Type declaration and erroneous type usage:
 
@@ -56,8 +56,8 @@ Cannot call animals.push because number [1] is incompatible with string [2] in a
  [1]  7│ animals.push(99)
 ```
 
-
-## How to set it up
+---
+#### How to set it up
 
 1. Add flow as a dependency to your project `yarn add --dev flow-bin`
 2. Add the flow preset to babel `yarn add --dev @babel/preset-flow`  & corresponding babel config
@@ -65,18 +65,18 @@ Cannot call animals.push because number [1] is incompatible with string [2] in a
 4. Run `npx flow init` to initialise  an empty `.flowconfig` file
 5. Add the `// @flow` annotation at the top of any file you would like to
 
+---
+#### 🎉 Congratulations you've now got flow in your project
 
-## 🎉 Congratulations you've now got flow in your project
-
-
-## It will first tell you what things it needs help understanding
+---
+#### It will first tell you what things it needs help understanding
 You don't need to type everything, some things it can figure out based on the rest of the code and its types
 
+---
+#### Things you can do
 
-## Things you can do
-
-
-## Example primitive type + input:
+---
+#### Example primitive type + input:
 
 ```tsx
 const createOption = (cat: string) => (
@@ -86,8 +86,8 @@ const createOption = (cat: string) => (
 )
 ```
 
-
-## Example primitive type + input optional:
+---
+#### Example primitive type + input optional:
 
 ```tsx
 const createOption = (cat?: string) =>
@@ -102,8 +102,8 @@ const createOption = (cat?: string) =>
   )
 ```
 
-
-## Example object type + return
+---
+#### Example object type + return
 
 ```tsx
 const createOption = (cat: string): React.Node => (
@@ -114,8 +114,8 @@ const createOption = (cat: string): React.Node => (
 ```
 
 
-
-## Example of enum
+---
+#### Example of enum
 
 ```typescript
 const animals: ('🐈' | '🐕' | '🐅' | '🦝' | '🦆')[] = [
@@ -127,8 +127,8 @@ const animals: ('🐈' | '🐕' | '🐅' | '🦝' | '🦆')[] = [
 ]
 ```
 
-
-## Example of enum + type alias
+---
+#### Example of enum + type alias
 
 ```typescript
 type Cat = '🐈' | '🐕' | '🐅' | '🦝' | '🦆'
@@ -136,8 +136,8 @@ type Cat = '🐈' | '🐕' | '🐅' | '🦝' | '🦆'
 const animals: Cat[] = ['🐈', '🐕', '🐅', '🦝', '🦆']
 ```
 
-
-## Example of Component Property Types + function signatures
+---
+#### Example of Component Property Types + function signatures
 
 ```typescript
 type ComponentProps = {
@@ -154,8 +154,8 @@ const App = ({ inputValue, handleNewCat, clearCat }: ComponentProps) => (
 Note: PropTypes is at runtime vs static for Flow and Typescript
 
 
-
-## Example of Redux State
+---
+#### Example of Redux State
 
 ```typescript
 type State = { inputValue: string }
@@ -165,8 +165,8 @@ const InitialState = {
 }
 ```
 
-
-## Example of Redux Action Creators
+---
+#### Example of Redux Action Creators
 ```typescript
 const HANDLE_NEW_CAT = 'HANDLE_NEW_CAT'
 const ClEAR_CAT = 'ClEAR_CAT'
@@ -186,8 +186,8 @@ export const clearCat = (): ClearCat => ({
 })
 ```
 
-
-## Example of Redux Reducer
+---
+#### Example of Redux Reducer
 
 ```typescript
 // To type action you shouldn't destruct it.
@@ -210,8 +210,8 @@ export const reducer = (state: State = InitialState, action: Action) => {
 }
 ```
 
-
-## You can export and import types
+---
+#### You can export and import types
 
 ```typescript
 export type State = { inputValue: string }
@@ -227,8 +227,8 @@ const mapStateToProps = (state: State) => ({
 
 ```
 
-
-## Writing tests for your types
+---
+#### Writing tests for your types
 
 ```typescript
 const animals: string[] = ['🐈', '🐕', '🐕', '🐅']
@@ -246,20 +246,20 @@ Typescript:
 
 with `dtslint` package
 
+---
+#### Convert to typescript demo....
 
-## Convert to typescript demo....
-
-
-## Something fun:
+---
+#### Something fun:
 ![Glow Logo](https://raw.githubusercontent.com/thejameskyle/glow/master/logo.jpg)
 
 
-
-## Flow:
+---
+#### Flow:
 ![flow output when getElementById can return null](https://snag.gy/fViESC.jpg)
 
 
-
-## Glow
+---
+#### Glow
 ![flow output when getElementById can return null using glow](https://snag.gy/jCO1Kn.jpg)
 
